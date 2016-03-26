@@ -8,7 +8,7 @@ import com.google.gson.JsonParser;
 
 
 public class PrepareFiles {
-	public static final double REVIEW_RESTAURANTS_NUM_LINES = 1;
+	public static final double REVIEW_RESTAURANTS_NUM_LINES = 1363242;
 	public static void main(String[] args) {
 		JsonParser parser = new JsonParser();
 		int lineNumber = 0;

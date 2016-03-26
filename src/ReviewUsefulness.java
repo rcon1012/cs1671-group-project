@@ -7,6 +7,8 @@ import edu.stanford.nlp.process.DocumentPreprocessor;
 
 public class ReviewUsefulness {
 	public static void main(String[] args) {
+		
+		
 		// word tokenization
 		String review = ""; // replace this with review to be tokenized
 		StringReader sr = new StringReader(review);
