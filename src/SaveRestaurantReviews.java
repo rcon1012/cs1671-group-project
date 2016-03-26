@@ -51,5 +51,6 @@ public class SaveRestaurantReviews
 		
 		sc_business.close();
 		sc_review.close();
+		out.close();
 	}
 }
