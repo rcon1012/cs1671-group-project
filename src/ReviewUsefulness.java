@@ -1,6 +1,9 @@
 import java.io.StringReader;
 import java.util.List;
 
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.process.DocumentPreprocessor;
+
 
 public class ReviewUsefulness {
 	public static void main(String[] args) {
