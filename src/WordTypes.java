@@ -22,12 +22,20 @@ public class WordTypes
 	public static HashSet<String> goodPronouns = new HashSet<String>();
 	public static void main(String[] args) throws IOException
 	{
-		Scanner sc_resturant_review = new Scanner(new File("yelp_academic_dataset_review_restaurants.json"));
+		Scanner sc_resturant_review = new Scanner(new File("yelp_academic_dataset_review_restaurants.json")); //make sure this is the right file 
 		MaxentTagger tagger = new MaxentTagger("models/english-left3words-distsim.tagger");
-		FileWriter out = new FileWriter(new File("Word Type.txt"));
+		FileWriter out = new FileWriter(new File("Word Type.arff"));
 		JsonParser parser = new JsonParser();
 		int counter = 0;
 
+		out.write("%Title: Types of Words\n@RELATION wordTypes\n");
+		out.write("@ATTRIBUTE pronounRatio NUMUERIC\n");
+		out.write("@ATTRIBUTE adjectiveRatio NUMERIC\n");
+		out.write("@ATTRIBUTE verbRatio NUMERIC\n");
+		out.write("@ATTRIBUTE superlativeRatio NUMERIC\n");
+		out.write("@ATTRIBUTE comparativeRatio NUMERIC\n");
+		out.write("@DATA\n");
+		
 		setUpPronounList();
 		
 		while (sc_resturant_review.hasNextLine() && counter < 10)
@@ -37,14 +45,13 @@ public class WordTypes
 			JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
 			int useful = votes.get("useful").getAsInt();
 			
-			
-			//need to parse through element and use some sort of part of speech tagger doe
-			
 			String tag = tagger.tagString(review);
 			int length = 0;
-			int adjective = 0; //could sort by superlative/comparative if we wanted to
+			int adjective = 0; 
 			int pronoun = 0;
 			int verb = 0;
+			int superlative = 0;
+			int comparative = 0;
 			String[] words = tag.split(" ");
 			for(int i = 0; i < words.length; i++)
 			{
@@ -54,6 +61,7 @@ public class WordTypes
 					continue;
 				}
 				
+				//condition this so punctuation does not count
 				length++;
 				if(splitter[1].equals("PRP") || splitter[1].equals("PRP$"))
 				{
@@ -63,23 +71,30 @@ public class WordTypes
 					}
 					
 				}
-				else if(splitter[1].substring(0,1).equals("J"))
+				else if(splitter[1].equals("JJR"))
 				{
 					adjective++;
+					comparative++;
+				}
+				else if(splitter[1].equals("JJS"))
+				{
+					adjective++;
+					superlative++;
 				}
 				else if(splitter[1].substring(0,1).equals("V"))
 				{
 					verb++;
 				}
-				
-				
 			}
 			
 			double pronounRatio = (double)pronoun / (double)length;
 			double adjectiveRatio = (double)adjective / (double)length;
 			double verbRatio = (double)verb / (double)length;
+			double superlativeRatio = (double)superlative / (double)adjective;
+			double comparativeRatio = (double)comparative / (double)adjective;
 			counter++;
-			String line = "Review " + counter + " has usefulness " + useful +  " Length: " + length + " pronoun ratio: " + pronounRatio + " adjectiveRatio: " + adjectiveRatio + " verbRatio: " + verbRatio;
+			String line = pronounRatio + "," + adjectiveRatio + "," + verbRatio + "," + superlativeRatio + "," + comparativeRatio + "\n";
+			//String line = "Review " + counter + " has usefulness " + useful +  " Length: " + length + " pronoun ratio: " + pronounRatio + " adjectiveRatio: " + adjectiveRatio + " verbRatio: " + verbRatio;
 			out.write(line + "\n");
 		}
 		
