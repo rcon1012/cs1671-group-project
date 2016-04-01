@@ -10,7 +10,7 @@ public class ReviewUsefulness {
 		
 		
 		// word tokenization
-		String review = ""; // replace this with review to be tokenized
+		String review = "the rain can't won't doesn't I've in spain. I am great."; // replace this with review to be tokenized
 		StringReader sr = new StringReader(review);
 		DocumentPreprocessor dp = new DocumentPreprocessor(sr);
 		for (List<HasWord> sentence : dp) {
@@ -18,10 +18,10 @@ public class ReviewUsefulness {
 				String word = sentence.get(i).word();
 				String nextWord = sentence.get(i + 1).word();
 				// re-concatenate contractions
-	    		if(nextWord.equals("m") || nextWord.equals("ll") || nextWord.equals("d") || 
-	    				nextWord.equals("ve") || nextWord.equals("re") || 
-	    				nextWord.equals("s") || nextWord.equals("ll") || nextWord.equals("nt") ) {
-	    			if(nextWord.equals("nt")) {
+	    		if(nextWord.equals("'m") || nextWord.equals("'d") || 
+	    				nextWord.equals("'ve") || nextWord.equals("'re") || 
+	    				nextWord.equals("'s") || nextWord.equals("'ll") || nextWord.equals("n't") ) {
+	    			if(nextWord.equals("n't")) {
 	    				word = word + "n't";
 	    			}
 	    			else {
