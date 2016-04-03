@@ -60,7 +60,7 @@ public class FeatureExtractor {
 				// word count of entire review
 				vals[1] = wordCount(review);
 				
-				// votes - useful, cool, funny
+				// votes - useful, cool, funny, stars
 				JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
 				// coolness
 				vals[2] = votes.get("cool").getAsDouble();
@@ -68,6 +68,9 @@ public class FeatureExtractor {
 				vals[3] = votes.get("funny").getAsDouble();
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
+				
+				// stars
+				vals[4] = element.getAsJsonObject().get("stars").getAsDouble();
 				
 				
 				// output instance instance to data
