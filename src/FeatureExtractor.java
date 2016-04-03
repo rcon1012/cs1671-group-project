@@ -113,9 +113,9 @@ public class FeatureExtractor {
 				
 				vals[8] = types[2] / vals[1];
 				
-				vals[9] = types[3];
+				vals[9] = types[3] / vals[1];
 				
-				vals[10] = types[4];
+				vals[10] = types[4] / vals[1];
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
@@ -263,8 +263,8 @@ public class FeatureExtractor {
 		types[0] = (double)pronoun;
 		types[1] = (double)adjective;
 		types[2] = (double)verb;
-		types[3] = (double)superlative / (double)adjective;
-		types[4] = (double)comparative / (double)adjective;
+		types[3] = (double)superlative;
+		types[4] = (double)comparative;
 			
 		return types;
 		
