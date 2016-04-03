@@ -1,0 +1,53 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     ReviewUnigramData
+Instances:    1001
+Attributes:   110
+[list of attributes omitted]
+Test mode:evaluate on training data
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness =
+
+      2.4372 * a +
+     10.1779 * alexions +
+     12.6901 * flavorheat +
+     -2.4232 * anymore +
+     10.0228 * teens +
+     14.5294 * nat +
+     20.779  * steeped +
+     14.1141 * settlers +
+     -8.9826 * transaction +
+      6.9443 * rankin +
+     31.9862 * rep +
+     -3.4525 * refreshing +
+     -1.4598 * water +
+      6.2489 * grass +
+      9.2072 * wqed +
+     13.5687 * whomp +
+     21.7904 * hoagie +
+     -2.1011 * location +
+      3.2664 * girlfriend +
+     -9.8555 * fashioned +
+     -4.7944 * trade +
+      7.3358 * and +
+     -4.4732 * resting +
+     31.6141
+
+Time taken to build model: 0.3 seconds
+
+=== Evaluation on training set ===
+=== Summary ===
+
+Correlation coefficient                  0.3121
+Mean absolute error                      9.8351
+Root mean squared error                 13.736 
+Relative absolute error                 95.8112 %
+Root relative squared error             95.0037 %
+Total Number of Instances             1001     
+
