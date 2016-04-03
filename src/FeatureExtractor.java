@@ -164,7 +164,7 @@ public class FeatureExtractor {
 		int totalWords = 0;
 		int totalSyllables = 0;
 		
-		for (List<HasWord> sentence : doc)
+		for (List<HasWord> sentence : dp)
 		{
 			totalSents++;
 			for (HasWord w : sentence)
