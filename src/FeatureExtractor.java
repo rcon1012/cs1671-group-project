@@ -1,4 +1,4 @@
- import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,8 +15,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.DocumentPreprocessor;
+import edu.stanford.nlp.process.PTBTokenizer;
 
 /**
  * Generates an arff file with a select set of features
@@ -33,6 +36,9 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("coolness"));
 		atts.addElement(new Attribute("funniness"));
 		atts.addElement(new Attribute("stars"));
+
+		// readability
+		atts.addElement(new Attribute("readability");
 		
 		// the final attribute is the score (usefulness)
 		atts.addElement(new Attribute("usefulness"));
@@ -66,12 +72,18 @@ public class FeatureExtractor {
 				vals[2] = votes.get("cool").getAsDouble();
 				// funniness
 				vals[3] = votes.get("funny").getAsDouble();
-				//usefulness
-				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
 				// stars
 				vals[4] = element.getAsJsonObject().get("stars").getAsDouble();
+
+				// Christian's section -- compute readability
+				// Uses some classes found in syllable.jar
+				StringReader sr = new StringReader(review);
+				DocumentPreprocessor dp = new DocumentPreprocessor(sr);
+				vals[5] = readability(dp);
 				
+				//usefulness
+				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
 				// output instance instance to data
 				bw.write((new Instance(1.0, vals).toString()) + "\n");
@@ -143,4 +155,29 @@ public class FeatureExtractor {
 		return numWords;
 	}
 	
+	public static float readability(DocumentPreprocessor doc)
+	{
+		EnglishSyllableCounter sc = new EnglishSyllableCounter();
+		
+		int totalSents = 0;
+		int totalWords = 0;
+		int totalSyllables = 0;
+		
+		for (List<HasWord> sentence : doc)
+		{
+			totalSents++;
+			for (HasWord w : sentence)
+			{
+				String s = w.word();
+				// Throw out any word that isn't just letters
+				if (s.matches("[a-zA-z]+"))
+				{
+					totalWords++;
+					int sylCount = sc.countSyllables(s);
+					totalSyllables += sylCount;	
+				}	
+			}
+		}
+		return (float)(206.835 - 1.015*totalWords/totalSents - 84.6*totalSyllables/totalWords);
+	}	
 }
