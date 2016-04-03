@@ -26,24 +26,19 @@ public class WordTypes
 		MaxentTagger tagger = new MaxentTagger("models/english-left3words-distsim.tagger");
 		FileWriter out = new FileWriter(new File("Word Type.arff"));
 		JsonParser parser = new JsonParser();
-		int counter = 0;
-
-		out.write("%Title: Types of Words\n@RELATION wordTypes\n");
-		out.write("@ATTRIBUTE pronounRatio NUMUERIC\n");
-		out.write("@ATTRIBUTE adjectiveRatio NUMERIC\n");
-		out.write("@ATTRIBUTE verbRatio NUMERIC\n");
-		out.write("@ATTRIBUTE superlativeRatio NUMERIC\n");
-		out.write("@ATTRIBUTE comparativeRatio NUMERIC\n");
-		out.write("@DATA\n");
+		
+		atts.addElement(new Attribute("pronounRatio"));
+		atts.addElement(new Attribute("adjectiveRatio"));
+		atts.addElement(new Attribute("verbRatio"));
+		atts.addElement(new Attribute("superlativeRatio"));
+		atts.addElement(new Attribute("comparativeRatio"));
 		
 		setUpPronounList();
 		
-		while (sc_resturant_review.hasNextLine() && counter < 10)
+		while (sc_resturant_review.hasNextLine())
 		{		
 			JsonElement element = parser.parse(sc_resturant_review.nextLine());
 			String review = element.getAsJsonObject().get("text").getAsString();
-			JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
-			int useful = votes.get("useful").getAsInt();
 			
 			String tag = tagger.tagString(review);
 			int length = 0;
@@ -94,8 +89,12 @@ public class WordTypes
 			double comparativeRatio = (double)comparative / (double)adjective;
 			counter++;
 			String line = pronounRatio + "," + adjectiveRatio + "," + verbRatio + "," + superlativeRatio + "," + comparativeRatio + "\n";
-			//String line = "Review " + counter + " has usefulness " + useful +  " Length: " + length + " pronoun ratio: " + pronounRatio + " adjectiveRatio: " + adjectiveRatio + " verbRatio: " + verbRatio;
-			out.write(line + "\n");
+			
+			vals[] = pronounRatio;
+			vals[] = adjectiveRatio;
+			vals[] = verbRatio;
+			vals[] = superlativeRatio;
+			vals[] = comparativeRatio;
 		}
 		
 		sc_resturant_review.close();
