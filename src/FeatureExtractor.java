@@ -38,7 +38,7 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("stars"));
 
 		// readability
-		atts.addElement(new Attribute("readability");
+		atts.addElement(new Attribute("readability"));
 		
 		// the final attribute is the score (usefulness)
 		atts.addElement(new Attribute("usefulness"));
@@ -77,10 +77,7 @@ public class FeatureExtractor {
 				vals[4] = element.getAsJsonObject().get("stars").getAsDouble();
 
 				// Christian's section -- compute readability
-				// Uses some classes found in syllable.jar
-				StringReader sr = new StringReader(review);
-				DocumentPreprocessor dp = new DocumentPreprocessor(sr);
-				vals[5] = readability(dp);
+				vals[5] = readability(review);
 				
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
@@ -155,8 +152,12 @@ public class FeatureExtractor {
 		return numWords;
 	}
 	
-	public static float readability(DocumentPreprocessor doc)
+	
+	// Uses classes from syllable.jar - include in classpath
+	public static float readability(String review)
 	{
+		StringReader sr = new StringReader(review);
+		DocumentPreprocessor dp = new DocumentPreprocessor(sr);
 		EnglishSyllableCounter sc = new EnglishSyllableCounter();
 		
 		int totalSents = 0;
