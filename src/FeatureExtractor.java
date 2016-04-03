@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
 
 import weka.core.Attribute;
 import weka.core.FastVector;
@@ -21,11 +22,23 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.DocumentPreprocessor;
 import edu.stanford.nlp.process.PTBTokenizer;
 
+import edu.stanford.nlp.ling.Sentence;
+import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.ling.HasWord;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.process.CoreLabelTokenFactory;
+import edu.stanford.nlp.process.DocumentPreprocessor;
+import edu.stanford.nlp.process.PTBTokenizer;
+import edu.stanford.nlp.process.TokenizerFactory;
+import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+
 /**
  * Generates an arff file with a select set of features
  *
  */
 public class FeatureExtractor {
+	public static HashSet<String> goodPronouns = new HashSet<String>();
+	
 	public static void main(String[] args) {
 		FastVector atts = new FastVector();
 		
@@ -40,9 +53,21 @@ public class FeatureExtractor {
 		// readability
 		atts.addElement(new Attribute("readability"));
 		
+		//word types 
+		atts.addElement(new Attribute("pronounRatio"));
+		atts.addElement(new Attribute("adjectiveRatio"));
+		atts.addElement(new Attribute("verbRatio"));
+		atts.addElement(new Attribute("superlativeRatio"));
+		atts.addElement(new Attribute("comparativeRatio"));
+		
 		// the final attribute is the score (usefulness)
 		atts.addElement(new Attribute("usefulness"));
 
+		//initializes list of personal pronouns
+		setUpPronounList();
+		
+		//creates tagger object
+		MaxentTagger tagger = new MaxentTagger("models/english-left3words-distsim.tagger");
 		
 		// create Instance object
 		Instances data = new Instances("yelp_dataset", atts, 0);
@@ -60,6 +85,7 @@ public class FeatureExtractor {
 				double[] vals = new double[data.numAttributes()];
 				JsonElement element = parser.parse(line);
 				String review = element.getAsJsonObject().get("text").getAsString();
+				String tag = tagger.tagString(review); //tagged string
 				
 				// calculate average sentence length
 				vals[0] = calculateAvgSentenceLength(review);
@@ -79,6 +105,17 @@ public class FeatureExtractor {
 				// Christian's section -- compute readability
 				vals[5] = readability(review);
 				
+				//spencer's section below
+				double types[] = wordTypes(tag);
+				vals[6] = types[0] / vals[1];
+				
+				vals[7] = types[1] / vals[1];
+				
+				vals[8] = types[2] / vals[1];
+				
+				vals[9] = types[3];
+				
+				vals[10] = types[4];
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
@@ -180,5 +217,83 @@ public class FeatureExtractor {
 			}
 		}
 		return (float)(206.835 - 1.015*totalWords/totalSents - 84.6*totalSyllables/totalWords);
-	}	
+	}
+
+	public static double[] wordTypes(String tag)
+	{
+		double types[] = new double[5];
+		String[] words = tag.split(" ");
+		int adjective = 0; 
+		int pronoun = 0;
+		int verb = 0;
+		int superlative = 0;
+		int comparative = 0;
+		for(int i = 0; i < words.length; i++)
+		{
+			String[] splitter = words[i].split("_");
+			if(splitter.length != 2)
+			{
+				continue;
+			}
+				
+			//condition this so punctuation does not count
+			if(splitter[1].equals("PRP") || splitter[1].equals("PRP$"))
+			{
+				if(pronounChecker(splitter[0]))
+				{
+					pronoun++;
+				}
+			}
+			else if(splitter[1].equals("JJR"))
+			{
+				adjective++;
+				comparative++;
+			}
+			else if(splitter[1].equals("JJS"))
+			{
+				adjective++;
+				superlative++;
+			}
+			else if(splitter[1].substring(0,1).equals("V"))
+			{
+				verb++;
+			}
+		}
+			
+		types[0] = (double)pronoun;
+		types[1] = (double)adjective;
+		types[2] = (double)verb;
+		types[3] = (double)superlative / (double)adjective;
+		types[4] = (double)comparative / (double)adjective;
+			
+		return types;
+		
+	}
+		
+	public static boolean pronounChecker(String pronoun)
+	{
+		if(goodPronouns.contains(pronoun.toLowerCase()))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public static void setUpPronounList()
+	{
+		String list = "i me my our us ours ourselves we";
+		String[] words = list.split(" ");
+		for(int i = 0; i < words.length; i++)
+			goodPronouns.add(words[i]);
+		
+	}
+	
+	
+	
+	
+
+	
 }
