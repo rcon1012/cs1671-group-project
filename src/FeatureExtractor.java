@@ -164,6 +164,24 @@ public class FeatureExtractor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		//Use Weka on feature_scores.arff to create a language model using Linear Regression
+		Instances data = new Instances( new BufferedReader( new FileReader("feature_scores.arff")));
+		data.setClassIndex( data.numAttributes()-1); //set on useful votes
+		LinearRegression model = new LinearRegression();
+		String output= "";
+		try{
+			model.buildClassifier(data);
+			output = model + "";
+		}
+		catch( Exception e){
+			System.out.println("Exception while building classifier");
+		}
+		//Write the model out to a file
+		BufferedWriter linRegOut = new BufferedWriter(new FileWriter("feature_scores.arff"));
+		linRegOut.write( model );
+		linRegOut.flush();
+		linRegOut.close();
 	}
 	
 	public static double calculateAvgSentenceLength(String text) {

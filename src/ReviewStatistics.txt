@@ -1,0 +1,141 @@
+number of votes for usefulness: 0 	this many times: 1224709
+number of votes for usefulness: 1 	this many times: 519700
+number of votes for usefulness: 2 	this many times: 225496
+number of votes for usefulness: 3 	this many times: 105772
+number of votes for usefulness: 4 	this many times: 54327
+number of votes for usefulness: 5 	this many times: 30636
+number of votes for usefulness: 6 	this many times: 18599
+number of votes for usefulness: 7 	this many times: 12248
+number of votes for usefulness: 8 	this many times: 8321
+number of votes for usefulness: 9 	this many times: 5866
+number of votes for usefulness: 10 	this many times: 4193
+number of votes for usefulness: 11 	this many times: 3209
+number of votes for usefulness: 12 	this many times: 2319
+number of votes for usefulness: 13 	this many times: 1849
+number of votes for usefulness: 14 	this many times: 1433
+number of votes for usefulness: 15 	this many times: 1066
+number of votes for usefulness: 16 	this many times: 847
+number of votes for usefulness: 17 	this many times: 708
+number of votes for usefulness: 18 	this many times: 584
+number of votes for usefulness: 19 	this many times: 458
+number of votes for usefulness: 20 	this many times: 365
+number of votes for usefulness: 21 	this many times: 301
+number of votes for usefulness: 22 	this many times: 250
+number of votes for usefulness: 23 	this many times: 222
+number of votes for usefulness: 24 	this many times: 177
+number of votes for usefulness: 25 	this many times: 159
+number of votes for usefulness: 26 	this many times: 142
+number of votes for usefulness: 27 	this many times: 104
+number of votes for usefulness: 28 	this many times: 123
+number of votes for usefulness: 29 	this many times: 87
+number of votes for usefulness: 30 	this many times: 77
+number of votes for usefulness: 31 	this many times: 70
+number of votes for usefulness: 32 	this many times: 64
+number of votes for usefulness: 33 	this many times: 57
+number of votes for usefulness: 34 	this many times: 52
+number of votes for usefulness: 35 	this many times: 42
+number of votes for usefulness: 36 	this many times: 44
+number of votes for usefulness: 37 	this many times: 40
+number of votes for usefulness: 38 	this many times: 45
+number of votes for usefulness: 39 	this many times: 35
+number of votes for usefulness: 40 	this many times: 28
+number of votes for usefulness: 41 	this many times: 25
+number of votes for usefulness: 42 	this many times: 19
+number of votes for usefulness: 43 	this many times: 18
+number of votes for usefulness: 44 	this many times: 23
+number of votes for usefulness: 45 	this many times: 19
+number of votes for usefulness: 46 	this many times: 25
+number of votes for usefulness: 47 	this many times: 19
+number of votes for usefulness: 48 	this many times: 18
+number of votes for usefulness: 49 	this many times: 23
+number of votes for usefulness: 50 	this many times: 12
+number of votes for usefulness: 51 	this many times: 10
+number of votes for usefulness: 52 	this many times: 15
+number of votes for usefulness: 53 	this many times: 8
+number of votes for usefulness: 54 	this many times: 9
+number of votes for usefulness: 55 	this many times: 9
+number of votes for usefulness: 56 	this many times: 12
+number of votes for usefulness: 57 	this many times: 6
+number of votes for usefulness: 58 	this many times: 4
+number of votes for usefulness: 59 	this many times: 5
+number of votes for usefulness: 60 	this many times: 8
+number of votes for usefulness: 61 	this many times: 5
+number of votes for usefulness: 62 	this many times: 4
+number of votes for usefulness: 63 	this many times: 1
+number of votes for usefulness: 64 	this many times: 8
+number of votes for usefulness: 65 	this many times: 5
+number of votes for usefulness: 66 	this many times: 4
+number of votes for usefulness: 67 	this many times: 1
+number of votes for usefulness: 68 	this many times: 2
+number of votes for usefulness: 69 	this many times: 3
+number of votes for usefulness: 70 	this many times: 8
+number of votes for usefulness: 71 	this many times: 2
+number of votes for usefulness: 72 	this many times: 4
+number of votes for usefulness: 73 	this many times: 4
+number of votes for usefulness: 74 	this many times: 1
+number of votes for usefulness: 75 	this many times: 2
+number of votes for usefulness: 76 	this many times: 2
+number of votes for usefulness: 79 	this many times: 1
+number of votes for usefulness: 82 	this many times: 1
+number of votes for usefulness: 84 	this many times: 1
+number of votes for usefulness: 85 	this many times: 1
+number of votes for usefulness: 91 	this many times: 1
+number of votes for usefulness: 96 	this many times: 1
+number of votes for usefulness: 99 	this many times: 1
+number of votes for usefulness: 105 	this many times: 1
+number of votes for usefulness: 108 	this many times: 1
+number of votes for usefulness: 111 	this many times: 2
+number of votes for usefulness: 112 	this many times: 2
+number of votes for usefulness: 113 	this many times: 1
+number of votes for usefulness: 114 	this many times: 2
+number of votes for usefulness: 115 	this many times: 2
+number of votes for usefulness: 116 	this many times: 3
+number of votes for usefulness: 117 	this many times: 2
+number of votes for usefulness: 118 	this many times: 1
+number of votes for usefulness: 119 	this many times: 1
+number of votes for usefulness: 121 	this many times: 2
+number of votes for usefulness: 123 	this many times: 4
+number of votes for usefulness: 125 	this many times: 1
+number of votes for usefulness: 126 	this many times: 2
+number of votes for usefulness: 127 	this many times: 2
+number of votes for usefulness: 129 	this many times: 2
+number of votes for usefulness: 131 	this many times: 1
+number of votes for usefulness: 132 	this many times: 1
+number of votes for usefulness: 133 	this many times: 1
+number of votes for usefulness: 135 	this many times: 1
+number of votes for usefulness: 137 	this many times: 1
+number of votes for usefulness: 141 	this many times: 1
+number of votes for usefulness: 147 	this many times: 1
+number of votes for usefulness: 167 	this many times: 1
+
+
+
+
+Year: 2004 	this many reviews made: 13
+Year: 2005 	this many reviews made: 690
+Year: 2006 	this many reviews made: 4183
+Year: 2007 	this many reviews made: 17561
+Year: 2008 	this many reviews made: 44929
+Year: 2009 	this many reviews made: 72727
+Year: 2010 	this many reviews made: 138075
+Year: 2011 	this many reviews made: 211252
+Year: 2012 	this many reviews made: 246993
+Year: 2013 	this many reviews made: 337025
+Year: 2014 	this many reviews made: 489561
+Year: 2015 	this many reviews made: 662204
+
+
+
+
+Year: 2004 	avg # of usefulness votes per review: 0.53846153
+Year: 2005 	avg # of usefulness votes per review: 1.09565217
+Year: 2006 	avg # of usefulness votes per review: 0.98661247
+Year: 2007 	avg # of usefulness votes per review: 1.61499914
+Year: 2008 	avg # of usefulness votes per review: 2.01141801
+Year: 2009 	avg # of usefulness votes per review: 1.72726772
+Year: 2010 	avg # of usefulness votes per review: 1.28047800
+Year: 2011 	avg # of usefulness votes per review: 1.15373582
+Year: 2012 	avg # of usefulness votes per review: 1.18234119
+Year: 2013 	avg # of usefulness votes per review: 1.12976188
+Year: 2014 	avg # of usefulness votes per review: 0.93409810
+Year: 2015 	avg # of usefulness votes per review: 0.71293891
