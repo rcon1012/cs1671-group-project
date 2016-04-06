@@ -61,7 +61,7 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("comparativeRatio"));
 		
 		//Unigram Data
-		GetUsefulWords.main(new String [2]);
+		//GetUsefulWords.main(new String [] {"yo"});
 		BufferedReader input = new BufferedReader(new FileReader("BestWords.txt"));
 		String word = "";
 		ArrayList <String> uniData= new ArrayList<String>();
