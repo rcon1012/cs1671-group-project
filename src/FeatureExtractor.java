@@ -60,6 +60,20 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("superlativeRatio"));
 		atts.addElement(new Attribute("comparativeRatio"));
 		
+		//Unigram Data
+		GetUsefulWords.main(new String [2]);
+		BufferedReader input = new BufferedReader(new FileReader("BestWords.txt"));
+		String word = "";
+		ArrayList <String> uniData= new ArrayList<String>();
+		AllWords everyWord = new AllWords();	//holds the entire vocabulary
+		while( word = br.readLine() ){
+			uniData.add( word );
+			everyWord.add( word );
+		}
+		for( int i = 0; i < uniData.size(); i++ ){
+			atts.addElement( new Attribute( uniData.get(i) ) );
+		}
+		
 		// the final attribute is the score (usefulness)
 		atts.addElement(new Attribute("usefulness"));
 
@@ -122,6 +136,18 @@ public class FeatureExtractor {
 				vals[9] = types[3] / numWords;
 				
 				vals[10] = types[4] / numWords;
+				
+				//Peter's unigram section
+				ReviewUnigram ru = new ReviewUnigram();
+				review = tp.processString( review );
+				ru.add( review );
+				ru.fill( everyWord );
+				for( int j = 0; j < uniData; j++ ){
+					word = uniData.get( j );
+					vals[j+11] = getLogProb( word );
+				}
+				
+				
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
