@@ -79,9 +79,10 @@ public class FeatureExtractor {
 			JsonParser parser = new JsonParser();
 			
 			bw.write(data.toString());
-			
+			int counter = 0;
 			String line = null;
-			while((line = br.readLine()) != null) {
+			while((line = br.readLine()) != null && counter < 10000) {
+				counter++;
 				double[] vals = new double[data.numAttributes()];
 				JsonElement element = parser.parse(line);
 				String review = element.getAsJsonObject().get("text").getAsString();
@@ -107,20 +108,26 @@ public class FeatureExtractor {
 				
 				//spencer's section below
 				double types[] = wordTypes(tag);
-				vals[6] = types[0] / vals[1];
+				double numWords = vals[1];
+				if(numWords == 0.0)
+				{
+					numWords = 1.0;
+				}
+				vals[6] = types[0] / numWords;
 				
-				vals[7] = types[1] / vals[1];
+				vals[7] = types[1] / numWords;
 				
-				vals[8] = types[2] / vals[1];
+				vals[8] = types[2] / numWords;
 				
-				vals[9] = types[3] / vals[1];
+				vals[9] = types[3] / numWords;
 				
-				vals[10] = types[4] / vals[1];
+				vals[10] = types[4] / numWords;
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
 				// output instance instance to data
 				bw.write((new Instance(1.0, vals).toString()) + "\n");
+				
 			}
 			br.close();
 			bw.close();
@@ -223,11 +230,11 @@ public class FeatureExtractor {
 	{
 		double types[] = new double[5];
 		String[] words = tag.split(" ");
-		int adjective = 0; 
-		int pronoun = 0;
-		int verb = 0;
-		int superlative = 0;
-		int comparative = 0;
+		double adjective = 0; 
+		double pronoun = 0;
+		double verb = 0;
+		double superlative = 0;
+		double comparative = 0;
 		for(int i = 0; i < words.length; i++)
 		{
 			String[] splitter = words[i].split("_");
@@ -260,11 +267,11 @@ public class FeatureExtractor {
 			}
 		}
 			
-		types[0] = (double)pronoun;
-		types[1] = (double)adjective;
-		types[2] = (double)verb;
-		types[3] = (double)superlative;
-		types[4] = (double)comparative;
+		types[0] = pronoun;
+		types[1] = adjective;
+		types[2] = verb;
+		types[3] = superlative;
+		types[4] = comparative;
 			
 		return types;
 		
