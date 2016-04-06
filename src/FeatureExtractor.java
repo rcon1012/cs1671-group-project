@@ -6,6 +6,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
+import java.io.IOException;
 
 import weka.core.Attribute;
 import weka.core.FastVector;
@@ -32,6 +33,7 @@ import edu.stanford.nlp.process.PTBTokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
+
 /**
  * Generates an arff file with a select set of features
  *
@@ -39,7 +41,7 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 public class FeatureExtractor {
 	public static HashSet<String> goodPronouns = new HashSet<String>();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		FastVector atts = new FastVector();
 		
 		// length data
@@ -66,7 +68,8 @@ public class FeatureExtractor {
 		String word = "";
 		ArrayList <String> uniData= new ArrayList<String>();
 		AllWords everyWord = new AllWords();	//holds the entire vocabulary
-		while( word = br.readLine() ){
+		while( input.ready() ){
+			word = input.readLine();
 			uniData.add( word );
 			everyWord.add( word );
 		}
@@ -139,12 +142,13 @@ public class FeatureExtractor {
 				
 				//Peter's unigram section
 				ReviewUnigram ru = new ReviewUnigram();
+				TextProcessor tp = new TextProcessor();
 				review = tp.processString( review );
 				ru.add( review );
 				ru.fill( everyWord );
-				for( int j = 0; j < uniData; j++ ){
+				for( int j = 0; j < uniData.size(); j++ ){
 					word = uniData.get( j );
-					vals[j+11] = getLogProb( word );
+					vals[j+11] = ru.getLogProb( word );
 				}
 				
 				
