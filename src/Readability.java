@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.util.List;
 
 import com.google.gson.*;
 
@@ -10,7 +9,6 @@ import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.DocumentPreprocessor;
 import edu.stanford.nlp.process.PTBTokenizer;
 
-//import java.text.BreakIterator;
 
 public class Readability
 {
@@ -21,7 +19,10 @@ public class Readability
 		JsonParser parser = new JsonParser();
 		
 		int processed = 0;
-		//while (sc.hasNextLine())
+		// Crashes near the end of the file; this is the exception:
+		// Exception in thread "main" com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated string at line 1 column 66 path $.user_id
+
+		while (sc.hasNextLine())
 		{
 			if (processed % 10000 == 0) System.out.println(processed);
 			String line = sc.nextLine();
