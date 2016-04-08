@@ -179,7 +179,7 @@ public class FeatureExtractor {
 			System.out.println("Exception while building classifier");
 		}
 		//Write the model out to a file
-		BufferedWriter linRegOut = new BufferedWriter(new FileWriter("feature_scores.arff"));
+		BufferedWriter linRegOut = new BufferedWriter(new FileWriter("results.txt"));
 		linRegOut.write( model + "" );
 		linRegOut.flush();
 		linRegOut.close();
