@@ -32,7 +32,7 @@ public class RandomizeReviews
 			allIndices.add(i);
 		}
 		
-		Random r = new Random();
+		Random r = new Random(100);
 		Collections.shuffle(allIndices, r);
 		
 		int counter = 0;
