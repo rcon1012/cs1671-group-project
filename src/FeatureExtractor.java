@@ -12,6 +12,7 @@ import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.classifiers.functions.LinearRegression;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -166,12 +167,12 @@ public class FeatureExtractor {
 		}
 		
 		//Use Weka on feature_scores.arff to create a language model using Linear Regression
-		Instances data = new Instances( new BufferedReader( new FileReader("feature_scores.arff")));
-		data.setClassIndex( data.numAttributes()-1); //set on useful votes
+		Instances featureData = new Instances( new BufferedReader( new FileReader("feature_scores.arff")));
+		featureData.setClassIndex( featureData.numAttributes()-1); //set on useful votes
 		LinearRegression model = new LinearRegression();
 		String output= "";
 		try{
-			model.buildClassifier(data);
+			model.buildClassifier(featureData);
 			output = model + "";
 		}
 		catch( Exception e){
@@ -179,7 +180,7 @@ public class FeatureExtractor {
 		}
 		//Write the model out to a file
 		BufferedWriter linRegOut = new BufferedWriter(new FileWriter("feature_scores.arff"));
-		linRegOut.write( model );
+		linRegOut.write( model + "" );
 		linRegOut.flush();
 		linRegOut.close();
 	}
