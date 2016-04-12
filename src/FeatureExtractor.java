@@ -3,10 +3,11 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.StringReader;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
-import java.io.IOException;
 
 import weka.core.Attribute;
 import weka.core.FastVector;
