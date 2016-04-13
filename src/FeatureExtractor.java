@@ -14,6 +14,8 @@ import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.classifiers.functions.LinearRegression;
+// This is what we can use to output information about
+// the model's performance (root mean squared error, etc.)
 import weka.classifiers.Evaluation;
 
 import com.google.gson.JsonElement;
