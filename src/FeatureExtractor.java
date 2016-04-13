@@ -14,6 +14,7 @@ import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.classifiers.functions.LinearRegression;
+import weka.classifiers.Evaluation;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -50,12 +51,12 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("avg_sentence_length"));
 		atts.addElement(new Attribute("review_length"));
 		// meta-data
-		atts.addElement(new Attribute("coolness"));
-		atts.addElement(new Attribute("funniness"));
-		atts.addElement(new Attribute("stars"));
+		atts.addElement(new Attribute("coolness_attr"));
+		atts.addElement(new Attribute("funniness_attr"));
+		atts.addElement(new Attribute("star_count"));
 
 		// readability
-		atts.addElement(new Attribute("readability"));
+		atts.addElement(new Attribute("readability_attr"));
 		
 		//word types 
 		atts.addElement(new Attribute("pronounRatio"));
@@ -80,7 +81,7 @@ public class FeatureExtractor {
 		}
 		
 		// the final attribute is the score (usefulness)
-		atts.addElement(new Attribute("usefulness"));
+		atts.addElement(new Attribute("usefulness_attr"));
 
 		//initializes list of personal pronouns
 		setUpPronounList();
