@@ -35,6 +35,19 @@ public class Unigram {
 		}
 	}
 	
+	public void addOne(String word)
+	{
+		if( unigram.containsKey(word) == false )
+		{
+			unigram.put(word, 1);
+		}
+		else 
+		{
+			unigram.put( word, unigram.get(word)+1 );
+		}
+	}
+	
+	
 	//Returns the LOG probability of the string passed in.
 	public double getProb( String s ){
 		double total = Double.parseDouble( count+"" );

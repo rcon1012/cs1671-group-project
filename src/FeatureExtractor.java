@@ -109,11 +109,50 @@ public class FeatureExtractor {
 				JsonElement element = parser.parse(line);
 				String review = element.getAsJsonObject().get("text").getAsString();
 				String tag = tagger.tagString(review); //tagged string
+				StringReader sr = new StringReader(review);
+				DocumentPreprocessor dp = new DocumentPreprocessor(sr);
+				EnglishSyllableCounter sc = new EnglishSyllableCounter();
+				
+				double numSentences = 0;
+				double numWords = 0;
+				int totalSyllables = 0;
+				
+				ReviewUnigram ru = new ReviewUnigram();
+				//TextProcessor tp = new TextProcessor();
+				//review = tp.processString( review );
+				//ru.add( review );
+				
+				for (List<HasWord> sentence : dp) {
+					ArrayList<String> tokenized = new ArrayList<String>(); 
+					for(int i = 0; i < sentence.size() - 1; i++) {
+						word = sentence.get(i).word();
+						String nextWord = sentence.get(i + 1).word();
+						// re-concatenate contractions
+						if(nextWord.equals("'m") || nextWord.equals("'d") || 
+								nextWord.equals("'ve") || nextWord.equals("'re") || 
+								nextWord.equals("'s") || nextWord.equals("'ll") || nextWord.equals("n't") ) {
+							if(nextWord.equals("n't")) {
+								word = word + "n't";
+							}
+							else {
+								word = word + "'" + nextWord;
+							}
+							i++;
+						}
+						tokenized.add(word);
+						ru.addOne(word);
+						totalSyllables += sc.countSyllables(word);
+					}
+					numSentences++;
+					numWords += tokenized.size();
+				}
+				float syllableScore = (float)(206.835 - 1.015*numWords/numSentences - 84.6*totalSyllables/numWords);
+				sr.close();
 				
 				// calculate average sentence length
-				vals[0] = calculateAvgSentenceLength(review);
-				// word count of entire review
-				vals[1] = wordCount(review);
+				vals[0] = numWords/numSentences;
+				// word count of entire review;
+				vals[1] = numWords;
 				
 				// votes - useful, cool, funny, stars
 				JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
@@ -126,11 +165,10 @@ public class FeatureExtractor {
 				vals[4] = element.getAsJsonObject().get("stars").getAsDouble();
 
 				// Christian's section -- compute readability
-				vals[5] = readability(review);
+				vals[5] = syllableScore;
 				
 				//spencer's section below
 				double types[] = wordTypes(tag);
-				double numWords = vals[1];
 				if(numWords == 0.0)
 				{
 					numWords = 1.0;
@@ -146,10 +184,6 @@ public class FeatureExtractor {
 				vals[10] = types[4] / numWords;
 				
 				//Peter's unigram section
-				ReviewUnigram ru = new ReviewUnigram();
-				TextProcessor tp = new TextProcessor();
-				review = tp.processString( review );
-				ru.add( review );
 				ru.fill( everyWord );
 				for( int j = 0; j < uniData.size(); j++ ){
 					word = uniData.get( j );

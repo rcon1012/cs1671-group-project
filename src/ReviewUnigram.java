@@ -20,6 +20,10 @@ public class ReviewUnigram {
 	public void fill( AllWords a ){
 		uni.addAllWords( a );
 	}
+	public void addOne(String word)
+	{
+		uni.addOne(word);
+	}
 	public double getLogProb( String s ){
 		return uni.getProb( s );
 	}
