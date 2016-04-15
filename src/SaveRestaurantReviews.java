@@ -4,7 +4,7 @@ yelp_academic_dataset_review.json, this code generates a new file
 only including reviews for restaurants. Make sure those two files
 are in your current directory.
 
-This code makes use of Gson, so also be sure to install it and
+This code makes use of Gson, so also be sure to download it and
 add it to your classpath.
 */
 
