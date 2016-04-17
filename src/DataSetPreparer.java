@@ -160,7 +160,7 @@ public class DataSetPreparer
 			JsonElement element = parser.parse(restaurant_reviews[i]);
 			JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
 			double usefulness = votes.get("useful").getAsDouble();
-			if(usefulness == 0 && (r.nextInt() % 2) == 0) {
+			if(!(usefulness == 0 && (r.nextInt() % 2) == 0)) {
 				out_review_undersample.write(restaurant_reviews[i] + "\n");
 			}
 			counter++;
