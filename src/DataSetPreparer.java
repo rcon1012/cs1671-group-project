@@ -31,6 +31,7 @@ DataSetPreparer
 */
 
 import com.google.gson.*;
+
 import java.util.*;
 import java.io.*;
 import java.text.*;
@@ -58,6 +59,8 @@ public class DataSetPreparer
 			new File("yelp_academic_dataset_business_restaurants.json"));
 		FileWriter out_review = new FileWriter(
 			new File("yelp_academic_dataset_review_restaurants.json"));
+		FileWriter out_review_undersample = new FileWriter(
+				new File("yelp_academic_dataset_review_restaurants_undersample.json"));
 		
 		// Store all of the business IDs of restaurants so that we can 
 		// see whether a review was written for a restaurant or for some 
@@ -154,9 +157,16 @@ public class DataSetPreparer
 			if (counter % 10000 == 0) System.out.println( 
 				( counter*100/TOTAL_RESTAURANT_REVIEWS ) + "%");
 			out_review.write(restaurant_reviews[i] + "\n");
-			counter++;		
+			JsonElement element = parser.parse(restaurant_reviews[i]);
+			JsonObject votes = (JsonObject) element.getAsJsonObject().get("votes");
+			double usefulness = votes.get("useful").getAsDouble();
+			if(usefulness == 0 && (r.nextInt() % 2) == 0) {
+				out_review_undersample.write(restaurant_reviews[i] + "\n");
+			}
+			counter++;
 		}
 		out_review.close();
+		out_review_undersample.close();
 		System.out.println(
 			"Done writing restaurant reviews to file in randomized order.");
 	}
