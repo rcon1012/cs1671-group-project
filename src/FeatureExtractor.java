@@ -117,7 +117,6 @@ public class FeatureExtractor {
 				double numWords = 0;
 				int totalSyllables = 0;
 				
-				ReviewUnigram ru = new ReviewUnigram();
 				//TextProcessor tp = new TextProcessor();
 				//review = tp.processString( review );
 				//ru.add( review );
@@ -140,7 +139,6 @@ public class FeatureExtractor {
 							i++;
 						}
 						tokenized.add(word);
-						ru.addOne(word);
 						totalSyllables += sc.countSyllables(word);
 					}
 					numSentences++;
@@ -182,14 +180,6 @@ public class FeatureExtractor {
 				vals[9] = types[3] / numWords;
 				
 				vals[10] = types[4] / numWords;
-				
-				//Peter's unigram section
-				ru.fill( everyWord );
-				for( int j = 0; j < uniData.size(); j++ ){
-					word = uniData.get( j );
-					vals[j+11] = ru.getLogProb( word );
-				}
-				
 				
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
