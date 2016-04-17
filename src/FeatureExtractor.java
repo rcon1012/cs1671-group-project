@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.StringReader;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
@@ -21,13 +20,13 @@ import weka.classifiers.Evaluation;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.DocumentPreprocessor;
 import edu.stanford.nlp.process.PTBTokenizer;
-
 import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.ling.HasWord;
@@ -48,6 +47,13 @@ public class FeatureExtractor {
 	
 	public static void main(String[] args) throws IOException {
 		FastVector atts = new FastVector();
+		FastVector attsClass = new FastVector();
+		FastVector classes = new FastVector();
+
+		classes.addElement(new Attribute("bin_0"));
+		classes.addElement(new Attribute("bin_1-2"));
+		classes.addElement(new Attribute("bin_3+"));
+
 		
 		// length data
 		atts.addElement(new Attribute("avg_sentence_length"));
@@ -61,29 +67,36 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("readability_attr"));
 		
 		//word types 
-		atts.addElement(new Attribute("pronounRatio"));
-		atts.addElement(new Attribute("adjectiveRatio"));
-		atts.addElement(new Attribute("verbRatio"));
-		atts.addElement(new Attribute("superlativeRatio"));
-		atts.addElement(new Attribute("comparativeRatio"));
-		
-		//Unigram Data
-		//GetUsefulWords.main(new String [] {"yo"});
-		BufferedReader input = new BufferedReader(new FileReader("BestWords.txt"));
-		String word = "";
-		ArrayList <String> uniData= new ArrayList<String>();
-		AllWords everyWord = new AllWords();	//holds the entire vocabulary
-		while( input.ready() ){
-			word = input.readLine();
-			uniData.add( word );
-			everyWord.add( word );
-		}
-		for( int i = 0; i < uniData.size(); i++ ){
-			atts.addElement( new Attribute( uniData.get(i) ) );
-		}
+		attsClass.addElement(new Attribute("pronounRatio"));
+		attsClass.addElement(new Attribute("adjectiveRatio"));
+		attsClass.addElement(new Attribute("verbRatio"));
+		attsClass.addElement(new Attribute("superlativeRatio"));
+		attsClass.addElement(new Attribute("comparativeRatio"));
 		
 		// the final attribute is the score (usefulness)
-		atts.addElement(new Attribute("usefulness_attr"));
+		attsClass.addElement(new Attribute("usefulness_attr"));
+		
+		// length data
+		attsClass.addElement(new Attribute("avg_sentence_length"));
+		attsClass.addElement(new Attribute("review_length"));
+		// meta-data
+		attsClass.addElement(new Attribute("coolness_attr"));
+		attsClass.addElement(new Attribute("funniness_attr"));
+		attsClass.addElement(new Attribute("star_count"));
+
+		// readability
+		attsClass.addElement(new Attribute("readability_attr"));
+		
+		//word types 
+		attsClass.addElement(new Attribute("pronounRatio"));
+		attsClass.addElement(new Attribute("adjectiveRatio"));
+		attsClass.addElement(new Attribute("verbRatio"));
+		attsClass.addElement(new Attribute("superlativeRatio"));
+		attsClass.addElement(new Attribute("comparativeRatio"));
+		
+		// the final attribute is the score (usefulness)
+		attsClass.addElement(new Attribute("usefulness_attr", classes));
+		
 
 		//initializes list of personal pronouns
 		setUpPronounList();
@@ -93,19 +106,23 @@ public class FeatureExtractor {
 		
 		// create Instance object
 		Instances data = new Instances("yelp_dataset", atts, 0);
+		Instances dataClass = new Instances("yelp_dataset_class", attsClass, 0);
 		
 		// read in the restaurant reviews
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("yelp_academic_dataset_review_restaurants.json"));
 			BufferedWriter bw = new BufferedWriter(new FileWriter("feature_scores.arff"));
+			BufferedWriter bwUnder = new BufferedWriter(new FileWriter("feature_scores_undersample.arff"));
 			JsonParser parser = new JsonParser();
 			
 			bw.write(data.toString());
+			bwUnder.write(data.toString());
 			int counter = 0;
 			String line = null;
 			while((line = br.readLine()) != null && counter < 10000) {
 				counter++;
 				double[] vals = new double[data.numAttributes()];
+				double[] valsClass = new double[dataClass.numAttributes()];
 				JsonElement element = parser.parse(line);
 				String review = element.getAsJsonObject().get("text").getAsString();
 				String tag = tagger.tagString(review); //tagged string
@@ -124,7 +141,7 @@ public class FeatureExtractor {
 				for (List<HasWord> sentence : dp) {
 					ArrayList<String> tokenized = new ArrayList<String>(); 
 					for(int i = 0; i < sentence.size() - 1; i++) {
-						word = sentence.get(i).word();
+						String word = sentence.get(i).word();
 						String nextWord = sentence.get(i + 1).word();
 						// re-concatenate contractions
 						if(nextWord.equals("'m") || nextWord.equals("'d") || 
@@ -184,9 +201,47 @@ public class FeatureExtractor {
 				//usefulness
 				vals[vals.length-1] = votes.get("useful").getAsDouble();
 				
+				// calculate average sentence length
+				valsClass[0] = numWords/numSentences;
+				// word count of entire review;
+				valsClass[1] = numWords;
+				
+				// votes - useful, cool, funny, stars
+				// coolness
+				valsClass[2] = votes.get("cool").getAsDouble();
+				// funniness
+				valsClass[3] = votes.get("funny").getAsDouble();
+				
+				// stars
+				valsClass[4] = element.getAsJsonObject().get("stars").getAsDouble();
+
+				// Christian's section -- compute readability
+				valsClass[5] = syllableScore;
+				
+				//spencer's section below
+				valsClass[6] = types[0] / numWords;
+				
+				valsClass[7] = types[1] / numWords;
+				
+				valsClass[8] = types[2] / numWords;
+				
+				valsClass[9] = types[3] / numWords;
+				
+				valsClass[10] = types[4] / numWords;
+				
+				//usefulness
+				if(vals[vals.length-1] == 0) {
+					valsClass[valsClass.length-1] = 0;
+				}
+				else if(vals[vals.length-1] < 3) {
+					valsClass[valsClass.length-1] = 1;
+				}
+				else {
+					valsClass[valsClass.length-1] = 2;
+				}
 				// output instance instance to data
 				bw.write((new Instance(1.0, vals).toString()) + "\n");
-				
+				bwUnder.write((new Instance(1.0, valsClass).toString()) + "\n");
 			}
 			br.close();
 			bw.close();
