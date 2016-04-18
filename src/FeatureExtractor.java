@@ -49,12 +49,12 @@ public class FeatureExtractor {
 		FastVector atts = new FastVector();
 		FastVector attsClass = new FastVector();
 		FastVector classes = new FastVector();
-
-		classes.addElement(new Attribute("bin_0"));
-		classes.addElement(new Attribute("bin_1-2"));
-		classes.addElement(new Attribute("bin_3+"));
-
 		
+		classes.addElement("bin0");
+		classes.addElement("bin12");
+		classes.addElement("bin3");
+
+		//Linear Regression attributes
 		// length data
 		atts.addElement(new Attribute("avg_sentence_length"));
 		atts.addElement(new Attribute("review_length"));
@@ -67,15 +67,16 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("readability_attr"));
 		
 		//word types 
-		attsClass.addElement(new Attribute("pronounRatio"));
-		attsClass.addElement(new Attribute("adjectiveRatio"));
-		attsClass.addElement(new Attribute("verbRatio"));
-		attsClass.addElement(new Attribute("superlativeRatio"));
-		attsClass.addElement(new Attribute("comparativeRatio"));
+		atts.addElement(new Attribute("pronounRatio"));
+		atts.addElement(new Attribute("adjectiveRatio"));
+		atts.addElement(new Attribute("verbRatio"));
+		atts.addElement(new Attribute("superlativeRatio"));
+		atts.addElement(new Attribute("comparativeRatio"));
 		
 		// the final attribute is the score (usefulness)
-		attsClass.addElement(new Attribute("usefulness_attr"));
+		atts.addElement(new Attribute("usefulness_attr"));
 		
+		// Classifier attributes
 		// length data
 		attsClass.addElement(new Attribute("avg_sentence_length"));
 		attsClass.addElement(new Attribute("review_length"));
@@ -95,8 +96,7 @@ public class FeatureExtractor {
 		attsClass.addElement(new Attribute("comparativeRatio"));
 		
 		// the final attribute is the score (usefulness)
-		attsClass.addElement(new Attribute("usefulness_attr", classes));
-		
+		attsClass.addElement(new Attribute("usefulness_attr", classes));		
 
 		//initializes list of personal pronouns
 		setUpPronounList();
