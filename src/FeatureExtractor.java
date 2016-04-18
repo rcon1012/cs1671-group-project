@@ -12,6 +12,7 @@ import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.ProtectedProperties;
 import weka.classifiers.functions.LinearRegression;
 // This is what we can use to output information about
 // the model's performance (root mean squared error, etc.)
@@ -96,6 +97,8 @@ public class FeatureExtractor {
 		attsClass.addElement(new Attribute("comparativeRatio"));
 		
 		// the final attribute is the score (usefulness)
+		Attribute asdf = new Attribute("usefulness_attr", classes);
+		ProtectedProperties asd = asdf.getMetadata();
 		attsClass.addElement(new Attribute("usefulness_attr", classes));		
 
 		//initializes list of personal pronouns
@@ -116,7 +119,7 @@ public class FeatureExtractor {
 			JsonParser parser = new JsonParser();
 			
 			bw.write(data.toString());
-			bwUnder.write(data.toString());
+			bwUnder.write(dataClass.toString());
 			int counter = 0;
 			String line = null;
 			while((line = br.readLine()) != null && counter < 10000) {
