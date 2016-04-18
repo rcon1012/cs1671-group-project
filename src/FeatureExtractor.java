@@ -51,9 +51,9 @@ public class FeatureExtractor {
 		FastVector attsClass = new FastVector();
 		FastVector classes = new FastVector();
 		
-		classes.addElement("bin0");
-		classes.addElement("bin12");
-		classes.addElement("bin3");
+		classes.addElement("0");
+		classes.addElement("1");
+		classes.addElement("2");
 
 		//Linear Regression attributes
 		// length data
