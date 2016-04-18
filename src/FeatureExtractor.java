@@ -245,6 +245,7 @@ public class FeatureExtractor {
 			}
 			br.close();
 			bw.close();
+			bwUnder.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -259,6 +260,7 @@ public class FeatureExtractor {
 			output = model + "";
 		}
 		catch( Exception e){
+			e.printStackTrace();
 			System.out.println("Exception while building classifier");
 		}
 		//Write the model out to a file
