@@ -1,0 +1,217 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-6
+Instances:    1334246
+Attributes:   6
+              pronounRatio
+              adjectiveRatio
+              verbRatio
+              superlativeRatio
+              comparativeRatio
+              usefulness_attr
+Test mode:    split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                          Class
+Variable                      0            1
+============================================
+pronounRatio            -3.8846      -1.8011
+adjectiveRatio      -96432.8413  -78386.1652
+verbRatio                 0.159       0.5758
+superlativeRatio     96450.4101   78397.9344
+comparativeRatio     96431.9156   78386.5283
+Intercept                1.7907       1.1091
+
+
+Odds Ratios...
+                          Class
+Variable                      0            1
+============================================
+pronounRatio             0.0206       0.1651
+adjectiveRatio                0            0
+verbRatio                1.1724       1.7785
+superlativeRatio       Infinity     Infinity
+comparativeRatio       Infinity     Infinity
+
+
+Time taken to build model: 74.86 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.94 seconds
+
+=== Summary ===
+
+Correctly Classified Instances      255751               56.377  %
+Incorrectly Classified Instances    197893               43.623  %
+Kappa statistic                         -0.0001
+Mean absolute error                      0.3729
+Root mean squared error                  0.432 
+Relative absolute error                 99.7521 %
+Root relative squared error             99.8846 %
+Coverage of cases (0.95 level)          99.9819 %
+Mean rel. region size (0.95 level)      99.6637 %
+Total Number of Instances           453644     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    1.000    0.564      1.000    0.721      -0.005   0.531     0.608     0
+                 0.000    0.000    0.125      0.000    0.000      -0.004   0.520     0.336     1
+                 0.000    0.000    0.000      0.000    0.000      -0.001   0.534     0.105     2
+Weighted Avg.    0.564    0.564    0.359      0.564    0.407      -0.004   0.528     0.465     
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 255747     28      1 |      a = 0
+ 150527      4      0 |      b = 1
+  47337      0      0 |      c = 2
+  
+  
+  === Run information ===
+
+Scheme:       weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8 -num-decimal-places 4
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1-6
+Instances:    1334246
+Attributes:   6
+              pronounRatio
+              adjectiveRatio
+              verbRatio
+              superlativeRatio
+              comparativeRatio
+              usefulness_attr
+Test mode:    split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+      1.9866 * pronounRatio +
+     -0.3089 * verbRatio +
+     -6.1001 * superlativeRatio +
+      0.3751 * comparativeRatio +
+      0.9395
+
+Time taken to build model: 6.63 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 1.63 seconds
+
+=== Summary ===
+
+Correlation coefficient                  0.0482
+Mean absolute error                      1.0829
+Root mean squared error                  2.0179
+Relative absolute error                100.0322 %
+Root relative squared error             99.8838 %
+Total Number of Instances           453644     
+
+
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-5,7-11
+Instances:    1334246
+Attributes:   2
+              readability_attr
+              usefulness_attr
+Test mode:    split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                     Class
+Variable                 0       1
+==================================
+readability_attr     0.014  0.0083
+Intercept           0.7005  0.5766
+
+
+Odds Ratios...
+                     Class
+Variable                 0       1
+==================================
+readability_attr    1.0141  1.0083
+
+
+Time taken to build model: 29.55 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 0.77 seconds
+
+=== Summary ===
+
+Correctly Classified Instances      255689               56.3634 %
+Incorrectly Classified Instances    197955               43.6366 %
+Kappa statistic                          0.0002
+Mean absolute error                      0.3733
+Root mean squared error                  0.4322
+Relative absolute error                 99.85   %
+Root relative squared error             99.9267 %
+Coverage of cases (0.95 level)          99.9991 %
+Mean rel. region size (0.95 level)      99.9993 %
+Total Number of Instances           453644     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.999    0.999    0.564      0.999    0.721      0.007    0.536     0.612     0
+                 0.001    0.001    0.290      0.001    0.001      -0.002   0.515     0.333     1
+                 0.001    0.000    0.194      0.001    0.001      0.005    0.558     0.115     2
+Weighted Avg.    0.564    0.563    0.435      0.564    0.407      0.004    0.531     0.467     
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 255568    155     53 |      a = 0
+ 150387     97     47 |      b = 1
+  47231     82     24 |      c = 2
+
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8 -num-decimal-places 4
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1-5,7-11
+Instances:    1334246
+Attributes:   2
+              readability_attr
+              usefulness_attr
+Test mode:    split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0092 * readability_attr +
+      1.6117
+
+Time taken to build model: 6.42 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on training split: 2.14 seconds
+
+=== Summary ===
+
+Correlation coefficient                  0.0584
+Mean absolute error                      1.0868
+Root mean squared error                  2.0168
+Relative absolute error                100.3915 %
+Root relative squared error             99.8297 %
+Total Number of Instances           453644     
+
+
+
