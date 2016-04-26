@@ -1,0 +1,102 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1-2,6-11
+Instances:    1334246
+Attributes:   4
+              coolness_attr
+              funniness_attr
+              star_count
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+      0.8931 * coolness_attr +
+      0.2642 * funniness_attr +
+     -0.1196 * star_count +
+      0.8155
+
+Time taken to build model: 0.75 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.868 
+Mean absolute error                      0.6659
+Root mean squared error                  1.0032
+Relative absolute error                 61.5113 %
+Root relative squared error             49.6588 %
+Total Number of Instances           453644     
+
+__________________________________________________________________________________
+__________________________________________________________________________________
+
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-2,6-11
+Instances:    1334246
+Attributes:   4
+              coolness_attr
+              funniness_attr
+              star_count
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                    Class
+Variable                0        1
+==================================
+coolness_attr      -2.992  -1.0238
+funniness_attr    -1.1802  -0.3552
+star_count         0.4562    0.284
+Intercept          2.1837    1.679
+
+
+Odds Ratios...
+                    Class
+Variable                0        1
+==================================
+coolness_attr      0.0502   0.3592
+funniness_attr     0.3072   0.7011
+star_count         1.5781   1.3284
+
+
+Time taken to build model: 65.08 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      326211               71.909  %
+Incorrectly Classified Instances    127433               28.091  %
+Kappa statistic                          0.4579
+Mean absolute error                      0.2723
+Root mean squared error                  0.3675
+Relative absolute error                 72.838  %
+Root relative squared error             84.9871 %
+Total Number of Instances           453644     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.92      0.428      0.735     0.92      0.817      0.795    0
+                 0.454     0.125      0.643     0.454     0.532      0.718    1
+                 0.477     0.012      0.828     0.477     0.605      0.899    2
+Weighted Avg.    0.719     0.284      0.714     0.719     0.701      0.78 
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 235295  20274    207 |      a = 0
+  77713  68325   4493 |      b = 1
+   7011  17735  22591 |      c = 2
+
