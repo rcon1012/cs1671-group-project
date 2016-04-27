@@ -1,0 +1,93 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1,3-11
+Instances:    1334246
+Attributes:   2
+              review_length
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+      0.0059 * review_length +
+      0.2318
+
+Time taken to build model: 0.52 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.344 
+Mean absolute error                      1.0183
+Root mean squared error                  1.8969
+Relative absolute error                 94.0679 %
+Root relative squared error             93.8981 %
+Total Number of Instances           453644     
+
+
+__________________________________________________________________________________
+__________________________________________________________________________________
+
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R3-11-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    1334246
+Attributes:   2
+              review_length
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                   Class
+Variable               0        1
+=================================
+review_length    -0.0089   -0.004
+Intercept         2.9535   1.8634
+
+
+Odds Ratios...
+                   Class
+Variable               0        1
+=================================
+review_length     0.9911    0.996
+
+
+Time taken to build model: 29.56 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      263179               58.0144 %
+Incorrectly Classified Instances    190465               41.9856 %
+Kappa statistic                          0.1156
+Mean absolute error                      0.3511
+Root mean squared error                  0.4193
+Relative absolute error                 93.92   %
+Root relative squared error             96.9646 %
+Total Number of Instances           453644     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.922     0.765      0.609     0.922     0.733      0.679    0
+                 0.155     0.113      0.407     0.155     0.225      0.586    1
+                 0.086     0.012      0.448     0.086     0.144      0.771    2
+Weighted Avg.    0.58      0.47       0.525     0.58      0.503      0.658
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 235736  18245   1795 |      a = 0
+ 123936  23383   3212 |      b = 1
+  27421  15856   4060 |      c = 2
+

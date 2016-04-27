@@ -1,0 +1,96 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R3-11
+Instances:    1334246
+Attributes:   3
+              avg_sentence_length
+              review_length
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0006 * avg_sentence_length +
+      0.0059 * review_length +
+      0.2385
+
+Time taken to build model: 1.22 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.344 
+Mean absolute error                      1.0184
+Root mean squared error                  1.8969
+Relative absolute error                 94.0721 %
+Root relative squared error             93.8976 %
+Total Number of Instances           453644     
+
+_____________________________________________________________________
+_____________________________________________________________________
+
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R3-11
+Instances:    1334246
+Attributes:   3
+              avg_sentence_length
+              review_length
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                         Class
+Variable                     0        1
+=======================================
+avg_sentence_length    -0.0073  -0.0032
+review_length          -0.0088  -0.0039
+Intercept               3.0411   1.9058
+
+
+Odds Ratios...
+                         Class
+Variable                     0        1
+=======================================
+avg_sentence_length     0.9927   0.9968
+review_length           0.9913   0.9961
+
+
+Time taken to build model: 49.16 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      263184               58.0155 %
+Incorrectly Classified Instances    190460               41.9845 %
+Kappa statistic                          0.1158
+Mean absolute error                      0.3511
+Root mean squared error                  0.4193
+Relative absolute error                 93.9105 %
+Root relative squared error             96.9622 %
+Total Number of Instances           453644     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.921     0.765      0.609     0.921     0.733      0.679    0
+                 0.156     0.113      0.407     0.156     0.226      0.585    1
+                 0.086     0.012      0.447     0.086     0.144      0.77     2
+Weighted Avg.    0.58      0.47       0.525     0.58      0.503      0.657
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 235646  18323   1807 |      a = 0
+ 123838  23482   3211 |      b = 1
+  27461  15820   4056 |      c = 2
