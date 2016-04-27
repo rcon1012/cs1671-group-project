@@ -30,7 +30,11 @@ public class UnigramExtractor {
 			BufferedReader br = new BufferedReader(new FileReader("most_common_words.txt"));
 			String line = null;
 			while((line = br.readLine()) != null) {
-				commonWords.add(line.replace(" ", "").replace("\t", ""));
+				String word = "";
+				for(int i = 3; i < line.length(); i++) {
+					word += line.charAt(i);
+				}
+				commonWords.add(word);
 			}
 			br.close();
 		} catch(Exception e) {
@@ -78,6 +82,9 @@ public class UnigramExtractor {
 							word = word.toLowerCase();
 							if(!commonWords.contains(word)) {
 								tokenized.add(word);
+							}else {
+								int x = 0;
+								x++;
 							}
 						}
 					}
