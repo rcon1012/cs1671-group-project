@@ -104,6 +104,12 @@ public class FeatureExtractor {
 		attsClass.addElement(new Attribute("superlativeRatio"));
 		attsClass.addElement(new Attribute("comparativeRatio"));
 		
+		//unigrams
+		indx = 11;
+		for(String word : unigrams.keySet()) {
+			attsClass.addElement(new Attribute(word));
+			unigrams.put(word, indx++);
+		}
 		
 		// the final attribute is the score (usefulness)
 		Attribute asdf = new Attribute("usefulness_attr", classes);
@@ -155,6 +161,7 @@ public class FeatureExtractor {
 					for(int i = 0; i < sentence.size() - 1; i++) {
 						if(unigrams.containsKey(sentence.get(i).word().toLowerCase())) {
 							vals[unigrams.get(sentence.get(i).word().toLowerCase())] = 1;
+							valsClass[unigrams.get(sentence.get(i).word().toLowerCase())] = 1;
 						}
 					}
 					for(int i = 0; i < sentence.size() - 1; i++) {
