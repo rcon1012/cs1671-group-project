@@ -122,17 +122,17 @@ public class FeatureExtractor {
 		
 		// read in the restaurant reviews
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("yelp_academic_dataset_review_restaurants.json"));
-			BufferedWriter bw = new BufferedWriter(new FileWriter("feature_scores.arff"));
-			BufferedWriter bwUnder = new BufferedWriter(new FileWriter("feature_scores_undersample.arff"));
+			BufferedReader br = new BufferedReader(new FileReader("yelp_academic_dataset_review_restaurants_undersample.json"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("linear_regression.arff"));
+			BufferedWriter bwUnder = new BufferedWriter(new FileWriter("logistic_regression.arff"));
 			JsonParser parser = new JsonParser();
 			
 			bw.write(data.toString());
 			bwUnder.write(dataClass.toString());
 			int counter = 0;
 			String line = null;
-			while((line = br.readLine()) != null && counter < 10000) {
-				counter++;
+			while((line = br.readLine()) != null) {
+				if(counter++ % 1000 == 0) System.out.println(counter);
 				double[] vals = new double[data.numAttributes()];
 				double[] valsClass = new double[dataClass.numAttributes()];
 				JsonElement element = parser.parse(line);
