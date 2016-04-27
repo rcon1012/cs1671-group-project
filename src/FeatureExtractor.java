@@ -2,41 +2,29 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.StringReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
+import weka.classifiers.functions.LinearRegression;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.ProtectedProperties;
-import weka.classifiers.functions.LinearRegression;
-// This is what we can use to output information about
-// the model's performance (root mean squared error, etc.)
-import weka.classifiers.Evaluation;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
-import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.HasWord;
-import edu.stanford.nlp.process.CoreLabelTokenFactory;
 import edu.stanford.nlp.process.DocumentPreprocessor;
-import edu.stanford.nlp.process.PTBTokenizer;
-import edu.stanford.nlp.ling.Sentence;
-import edu.stanford.nlp.ling.TaggedWord;
-import edu.stanford.nlp.ling.HasWord;
-import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.process.CoreLabelTokenFactory;
-import edu.stanford.nlp.process.DocumentPreprocessor;
-import edu.stanford.nlp.process.PTBTokenizer;
-import edu.stanford.nlp.process.TokenizerFactory;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+// This is what we can use to output information about
+// the model's performance (root mean squared error, etc.)
 
 
 /**
@@ -47,6 +35,19 @@ public class FeatureExtractor {
 	public static HashSet<String> goodPronouns = new HashSet<String>();
 	
 	public static void main(String[] args) throws IOException {
+		// read in unigrams
+		HashMap<String, Integer> unigrams = new HashMap<String, Integer>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("useful_words.txt"));
+			String line = null;
+			while((line = br.readLine()) != null) {
+				unigrams.put(line, null);
+			}
+			br.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		FastVector atts = new FastVector();
 		FastVector attsClass = new FastVector();
 		FastVector classes = new FastVector();
@@ -74,6 +75,13 @@ public class FeatureExtractor {
 		atts.addElement(new Attribute("superlativeRatio"));
 		atts.addElement(new Attribute("comparativeRatio"));
 		
+		//unigrams
+		int indx = 11;
+		for(String word : unigrams.keySet()) {
+			atts.addElement(new Attribute(word));
+			unigrams.put(word, indx++);
+		}
+		
 		// the final attribute is the score (usefulness)
 		atts.addElement(new Attribute("usefulness_attr"));
 		
@@ -95,6 +103,7 @@ public class FeatureExtractor {
 		attsClass.addElement(new Attribute("verbRatio"));
 		attsClass.addElement(new Attribute("superlativeRatio"));
 		attsClass.addElement(new Attribute("comparativeRatio"));
+		
 		
 		// the final attribute is the score (usefulness)
 		Attribute asdf = new Attribute("usefulness_attr", classes);
@@ -142,7 +151,12 @@ public class FeatureExtractor {
 				//ru.add( review );
 				
 				for (List<HasWord> sentence : dp) {
-					ArrayList<String> tokenized = new ArrayList<String>(); 
+					ArrayList<String> tokenized = new ArrayList<String>();
+					for(int i = 0; i < sentence.size() - 1; i++) {
+						if(unigrams.containsKey(sentence.get(i).word().toLowerCase())) {
+							vals[unigrams.get(sentence.get(i).word().toLowerCase())] = 1;
+						}
+					}
 					for(int i = 0; i < sentence.size() - 1; i++) {
 						String word = sentence.get(i).word();
 						String nextWord = sentence.get(i + 1).word();
