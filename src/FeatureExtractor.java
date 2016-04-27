@@ -154,7 +154,7 @@ public class FeatureExtractor {
 								word = word + "n't";
 							}
 							else {
-								word = word + "'" + nextWord;
+								word = word + nextWord;
 							}
 							i++;
 						}
