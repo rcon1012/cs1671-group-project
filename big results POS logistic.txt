@@ -38,4 +38,32 @@ superlativeRatio       Infinity     Infinity
 comparativeRatio       Infinity     Infinity
 
 
-Time taken to build model: 54.63 seconds
+Time taken to build model: 58.47 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      151550               46.5474 %
+Incorrectly Classified Instances    174032               53.4526 %
+Kappa statistic                          0.0134
+Mean absolute error                      0.4065
+Root mean squared error                  0.451 
+Relative absolute error                 99.7629 %
+Root relative squared error             99.8834 %
+Total Number of Instances           325582     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.05      0.027      0.542     0.05      0.091      0.532    0
+                 0.968     0.96       0.463     0.968     0.626      0.515    1
+                 0         0          0         0         0          0.528    2
+Weighted Avg.    0.465     0.453      0.426     0.465     0.324      0.523
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+   6356 121859      0 |      a = 0
+   4781 145194      1 |      b = 1
+    599  46792      0 |      c = 2
+

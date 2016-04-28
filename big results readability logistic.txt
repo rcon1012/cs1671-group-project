@@ -1,0 +1,56 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-5,7-111
+Instances:    957594
+Attributes:   2
+              readability_attr
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                     Class
+Variable                 0       1
+==================================
+readability_attr    0.0153   0.009
+Intercept          -0.0824  0.5244
+
+
+Odds Ratios...
+                     Class
+Variable                 0       1
+==================================
+readability_attr    1.0154  1.0091
+
+
+Time taken to build model: 18.02 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      150678               46.2796 %
+Incorrectly Classified Instances    174904               53.7204 %
+Kappa statistic                          0.0054
+Mean absolute error                      0.4068
+Root mean squared error                  0.4511
+Relative absolute error                 99.8391 %
+Root relative squared error             99.9224 %
+Total Number of Instances           325582     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.014     0.006      0.601     0.014     0.028      0.536    0
+                 0.992     0.988      0.462     0.992     0.63       0.508    1
+                 0         0          0.193     0         0.001      0.553    2
+Weighted Avg.    0.463     0.458      0.478     0.463     0.301      0.525
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+   1850 126328     37 |      a = 0
+   1115 148806     55 |      b = 1
+    111  47258     22 |      c = 2
