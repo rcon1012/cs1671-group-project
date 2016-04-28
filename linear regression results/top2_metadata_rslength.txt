@@ -1,0 +1,39 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R6-111
+Instances:    100000
+Attributes:   6
+              avg_sentence_length
+              review_length
+              coolness_attr
+              funniness_attr
+              star_count
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0012 * avg_sentence_length +
+      0.0019 * review_length +
+      0.8464 * coolness_attr +
+      0.2487 * funniness_attr +
+     -0.1221 * star_count +
+      0.7936
+
+Time taken to build model: 0.12 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.8724
+Mean absolute error                      0.761 
+Root mean squared error                  1.0976
+Relative absolute error                 60.1132 %
+Root relative squared error             48.8713 %
+Total Number of Instances            34000     

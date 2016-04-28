@@ -1,0 +1,104 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1-11
+Instances:    100000
+Attributes:   101
+[list of attributes omitted]
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+      0.3949 * parking +
+      0.1359 * big +
+      0.1204 * lunch +
+      0.0509 * been +
+      0.2131 * taste +
+      0.0822 * bring +
+      0.0573 * bit +
+      0.2846 * cheese +
+      0.1598 * bar +
+      0.0501 * else +
+      0.106  * far +
+      0.232  * options +
+      0.1432 * order +
+      0.1434 * sure +
+      0.1757 * made +
+      0.2926 * & +
+      0.0404 * night +
+      0.1384 * is +
+      0.0926 * drink +
+      0.1208 * quality +
+      0.0867 * ever +
+      0.1838 * 2 +
+      0.1403 * stop +
+      0.1279 * trying +
+      0.1189 * restaurants +
+      0.1132 * looking +
+      0.1332 * tasty +
+      0.3257 * items +
+      0.0582 * probably +
+      0.1222 * least +
+      0.1548 * same +
+      0.0993 * are +
+      0.2032 * -rrb- +
+      0.1138 * came +
+      0.029  * place +
+      0.0806 * everything +
+      0.046  * table +
+      0.0646 * though +
+      0.0963 * vegas +
+      0.0684 * restaurant +
+      0.1468 * eating +
+      0.1888 * off +
+      0.1431 * places +
+      0.1189 * thank +
+      0.1241 * did +
+      0.2524 * perfect +
+      0.081  * got +
+      0.2327 * that +
+      0.3597 * won +
+      0.049  * different +
+      0.189  * town +
+      0.0977 * everyone +
+      0.0936 * friends +
+      0.0756 * especially +
+      0.1055 * keep +
+     -0.1128 * overall +
+      0.105  * full +
+      0.0637 * little +
+      0.1183 * next +
+      0.0996 * away +
+      0.1229 * around +
+      0.2193 * can +
+      0.0464 * pizza +
+      0.0801 * said +
+      0.0522 * pretty +
+      0.1411 * enough +
+      0.1509 * clean +
+      0.0662 * dinner +
+      0.1294 * home +
+      0.093  * better +
+      0.0494 * special +
+      0.124  * super +
+     -0.0218 * service +
+      0.0557 * location +
+      0.1331 * coming +
+      0.3689
+
+Time taken to build model: 31.95 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.3095
+Mean absolute error                      1.1876
+Root mean squared error                  2.1358
+Relative absolute error                 93.8161 %
+Root relative squared error             95.0936 %
+Total Number of Instances            34000   

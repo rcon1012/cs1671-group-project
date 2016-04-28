@@ -1,0 +1,31 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R1-5,7-111
+Instances:    100000
+Attributes:   2
+              readability_attr
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0085 * readability_attr +
+      1.9358
+
+Time taken to build model: 0.08 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.0608
+Mean absolute error                      1.2617
+Root mean squared error                  2.2422
+Relative absolute error                 99.6732 %
+Root relative squared error             99.8321 %
+Total Number of Instances            34000     

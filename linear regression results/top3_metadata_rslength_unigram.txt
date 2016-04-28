@@ -1,0 +1,87 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset-weka.filters.unsupervised.attribute.Remove-R6-11
+Instances:    100000
+Attributes:   106
+[list of attributes omitted]
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0016 * avg_sentence_length +
+      0.0018 * review_length +
+      0.8452 * coolness_attr +
+      0.2507 * funniness_attr +
+     -0.1229 * star_count +
+     -0.0213 * big +
+      0.0269 * lunch +
+     -0.0345 * bring +
+     -0.0189 * bit +
+      0.0221 * cheese +
+      0.025  * far +
+      0.0571 * options +
+      0.0198 * sure +
+     -0.0246 * nothing +
+     -0.0395 * night +
+      0.028  * is +
+     -0.0288 * drink +
+      0.061  * quality +
+      0.043  * 2 +
+      0.0613 * restaurants +
+      0.0665 * items +
+     -0.0428 * probably +
+      0.0262 * worth +
+      0.0246 * are +
+      0.0326 * -rrb- +
+     -1.5919 * wouldn +
+      0.0318 * place +
+      0.0229 * everything +
+     -0.0495 * though +
+     -0.1037 * vegas +
+      0.0551 * restaurant +
+     -0.0255 * eating +
+      0.0251 * off +
+      0.0247 * places +
+      0.077  * returning +
+     -0.037  * thank +
+     -0.0514 * quick +
+     -0.0333 * wish +
+      0.0174 * that +
+     -0.0559 * burger +
+     -0.081  * buffet +
+      0.0423 * town +
+      0.033  * everyone +
+     -0.0238 * friends +
+      0.0264 * especially +
+     -0.0319 * overall +
+     -0.0361 * full +
+     -0.0429 * little +
+     -0.0227 * next +
+      0.0459 * however +
+      0.0292 * prices +
+     -0.0233 * pretty +
+     -0.0353 * stars +
+     -0.0201 * enough +
+      0.0217 * dinner +
+      0.0452 * super +
+      0.0424 * coming +
+      0.0686 * customer +
+      0.7654
+
+Time taken to build model: 51.34 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.8725
+Mean absolute error                      0.7585
+Root mean squared error                  1.0972
+Relative absolute error                 59.92   %
+Root relative squared error             48.8536 %
+Total Number of Instances            34000     
