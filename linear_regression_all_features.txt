@@ -1,0 +1,114 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.LinearRegression -S 0 -R 1.0E-8
+Relation:     yelp_dataset
+Instances:    957594
+Attributes:   112
+[list of attributes omitted]
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+usefulness_attr =
+
+     -0.0027 * avg_sentence_length +
+      0.0018 * review_length +
+      0.8488 * coolness_attr +
+      0.2421 * funniness_attr +
+     -0.1248 * star_count +
+     -0.0016 * readability_attr +
+     -0.0946 * verbRatio +
+      0.5008 * superlativeRatio +
+     -0.0296 * big +
+      0.0272 * lunch +
+      0.019  * been +
+     -0.0069 * bad +
+     -0.0297 * bit +
+      0.0165 * bar +
+      0.0443 * options +
+      0.0136 * order +
+      0.0109 * went +
+      0.0068 * made +
+      0.021  * & +
+     -0.0326 * night +
+      0.0363 * is +
+      0.0397 * quality +
+      0.0069 * ever +
+      0.0398 * 2 +
+      0.0161 * trying +
+      0.0376 * restaurants +
+      0.0117 * looking +
+     -0.008  * tasty +
+      0.0552 * items +
+      0.0575 * don +
+     -0.0317 * probably +
+     -0.0183 * least +
+      0.0158 * worth +
+      0.0128 * same +
+      0.0328 * are +
+      0.0306 * -rrb- +
+      0.0085 * came +
+      0.0341 * place +
+      0.0221 * everything +
+     -0.0092 * ordered +
+     -0.0512 * though +
+     -0.1154 * vegas +
+      0.0485 * restaurant +
+     -0.017  * eating +
+      0.0131 * off +
+      0.019  * places +
+      0.0835 * returning +
+     -0.0418 * thank +
+     -0.0342 * quick +
+     -0.0165 * mexican +
+     -0.0184 * got +
+     -0.0114 * wish +
+      0.0205 * that +
+     -0.0576 * burger +
+     -0.0548 * won +
+      0.0149 * sushi +
+     -0.0241 * buffet +
+     -0.0084 * different +
+      0.0433 * town +
+     -0.0179 * everyone +
+     -0.1287 * ve +
+     -0.0152 * once +
+     -0.038  * overall +
+     -0.0085 * full +
+     -0.0289 * little +
+     -0.0151 * next +
+     -0.0196 * however +
+      0.0121 * away +
+      0.0097 * can +
+      0.0175 * pizza +
+      0.0423 * prices +
+      0.0235 * said +
+      0.0288 * live +
+     -0.0353 * pretty +
+     -0.0162 * sandwich +
+     -0.0259 * stars +
+     -0.0194 * enough +
+      0.0122 * clean +
+      0.0217 * dinner +
+     -0.0116 * better +
+      0.0206 * super +
+      0.0138 * service +
+     -0.0139 * location +
+      0.0119 * coming +
+      0.0797 * customer +
+      0.9051
+
+Time taken to build model: 37690.95 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correlation coefficient                  0.8759
+Mean absolute error                      0.7553
+Root mean squared error                  1.0899
+Relative absolute error                 59.639  %
+Root relative squared error             48.2594 %
+Total Number of Instances           325582     
