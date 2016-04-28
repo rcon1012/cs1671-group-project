@@ -1,0 +1,62 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-2,6-111
+Instances:    957594
+Attributes:   4
+              coolness_attr
+              funniness_attr
+              star_count
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                    Class
+Variable                0        1
+==================================
+coolness_attr     -3.0121  -1.0292
+funniness_attr    -1.1943  -0.3597
+star_count         0.4604   0.2862
+Intercept          1.4894   1.6785
+
+
+Odds Ratios...
+                    Class
+Variable                0        1
+==================================
+coolness_attr      0.0492   0.3573
+funniness_attr     0.3029   0.6979
+star_count         1.5848   1.3314
+
+
+Time taken to build model: 39.94 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      211217               64.8737 %
+Incorrectly Classified Instances    114365               35.1263 %
+Kappa statistic                          0.4151
+Mean absolute error                      0.3067
+Root mean squared error                  0.3903
+Relative absolute error                 75.2631 %
+Root relative squared error             86.4447 %
+Total Number of Instances           325582     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.814     0.333      0.614     0.814     0.7        0.795    0
+                 0.562     0.251      0.657     0.562     0.606      0.708    1
+                 0.476     0.016      0.831     0.476     0.605      0.88     2
+Weighted Avg.    0.649     0.249      0.665     0.649     0.643      0.767
+
+=== Confusion Matrix ===
+
+      a      b      c   <-- classified as
+ 104346  23757    112 |      a = 0
+  61183  84328   4465 |      b = 1
+   4548  20300  22543 |      c = 2

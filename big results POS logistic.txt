@@ -1,0 +1,41 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-6,12-111
+Instances:    957594
+Attributes:   6
+              pronounRatio
+              adjectiveRatio
+              verbRatio
+              superlativeRatio
+              comparativeRatio
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                          Class
+Variable                      0            1
+============================================
+pronounRatio            -4.0715       -1.913
+adjectiveRatio      -93729.8316  -69709.0019
+verbRatio                0.2155        0.632
+superlativeRatio     93748.0182   69721.3043
+comparativeRatio     93729.2046   69709.3926
+Intercept                1.0942       1.1033
+
+
+Odds Ratios...
+                          Class
+Variable                      0            1
+============================================
+pronounRatio             0.0171       0.1476
+adjectiveRatio                0            0
+verbRatio                1.2405       1.8813
+superlativeRatio       Infinity     Infinity
+comparativeRatio       Infinity     Infinity
+
+
+Time taken to build model: 54.63 seconds

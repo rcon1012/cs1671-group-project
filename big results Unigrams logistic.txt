@@ -1,0 +1,253 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R1-11
+Instances:    957594
+Attributes:   101
+[list of attributes omitted]
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                 Class
+Variable             0        1
+===============================
+parking        -0.3514  -0.1902
+big            -0.1074   -0.046
+lunch           -0.202  -0.1213
+been           -0.1275  -0.0573
+bad            -0.0858  -0.0262
+taste          -0.1929  -0.1181
+bring          -0.0962  -0.0526
+bit            -0.0669  -0.0229
+cheese         -0.2958  -0.1686
+bar            -0.2378   -0.122
+else           -0.0581  -0.0209
+far            -0.0969  -0.0265
+options        -0.1656  -0.1012
+order          -0.1676    -0.09
+sure           -0.1492  -0.0774
+went           -0.0006    0.028
+made           -0.1809  -0.1309
+&              -0.2746  -0.1586
+nothing        -0.1131  -0.0281
+night          -0.1084  -0.0439
+is             -0.3166  -0.1848
+drink          -0.1287  -0.0677
+quality        -0.1171  -0.0538
+ever           -0.1316  -0.0696
+2              -0.2188  -0.1266
+stop           -0.1653   -0.095
+trying         -0.1938  -0.1022
+restaurants    -0.0926  -0.0442
+looking        -0.1163  -0.0615
+tasty          -0.2017  -0.1193
+items          -0.3458  -0.2338
+don            -0.3485  -0.1668
+wait            0.0092    0.003
+probably       -0.0889  -0.0214
+least          -0.1066  -0.0621
+worth          -0.0119   0.0051
+same           -0.1881  -0.0824
+are            -0.2019  -0.1121
+-rrb-          -0.3708  -0.1731
+came           -0.1386  -0.0731
+wouldn           0.641  -0.0268
+place          -0.1273  -0.0292
+everything     -0.1411  -0.0857
+table          -0.0952  -0.0389
+ordered        -0.0918   -0.026
+though         -0.0188   0.0077
+vegas           0.1213  -0.0231
+restaurant      -0.129  -0.0531
+eating         -0.1865  -0.0945
+off             -0.246  -0.1459
+places         -0.1155  -0.0436
+returning      -0.1413  -0.0667
+thank          -0.1837  -0.1556
+did            -0.2051  -0.1257
+quick           0.0027  -0.0116
+perfect        -0.2437  -0.1451
+mexican        -0.0878  -0.0066
+got            -0.1212  -0.0486
+wish           -0.0493  -0.0158
+that           -0.5407   -0.332
+wasn            0.3925   0.2195
+burger          0.0194   0.0073
+won            -0.3918  -0.1895
+sushi          -0.0352  -0.0174
+buffet         -0.0532  -0.0403
+different      -0.0861  -0.0449
+town            -0.192  -0.1249
+everyone       -0.0886  -0.0524
+friends        -0.1865  -0.0772
+ve             -0.1577   0.0559
+especially     -0.0247  -0.0013
+once           -0.0695  -0.0352
+keep           -0.1662  -0.0816
+overall          0.091   0.0875
+full           -0.1792  -0.1075
+little         -0.1352  -0.0798
+next           -0.1617  -0.1023
+however         0.0001   0.0315
+away           -0.1832  -0.1066
+drinks         -0.0286  -0.0076
+around         -0.1676    -0.09
+can            -0.2978  -0.1767
+pizza           -0.047   -0.018
+prices          -0.065  -0.0267
+said           -0.0841  -0.0406
+live           -0.1464  -0.0589
+pretty         -0.0929  -0.0217
+sandwich       -0.1327  -0.0604
+stars          -0.0736  -0.0374
+enough         -0.1643  -0.0955
+clean          -0.1272  -0.0949
+dinner         -0.0439   -0.047
+home           -0.1594  -0.0817
+better         -0.1041  -0.0531
+special        -0.0872  -0.0406
+super          -0.1659  -0.0842
+service         0.0266   -0.004
+location       -0.1466  -0.0809
+coming         -0.1096  -0.0766
+customer       -0.0867  -0.0545
+Intercept       2.7176   2.2259
+
+
+Odds Ratios...
+                 Class
+Variable             0        1
+===============================
+parking         0.7037   0.8268
+big             0.8982   0.9551
+lunch           0.8171   0.8858
+been            0.8803   0.9443
+bad             0.9178   0.9741
+taste           0.8245   0.8886
+bring           0.9083   0.9487
+bit             0.9352   0.9773
+cheese          0.7439   0.8448
+bar             0.7883   0.8851
+else            0.9435   0.9793
+far             0.9077   0.9738
+options         0.8474   0.9037
+order           0.8457   0.9139
+sure            0.8614   0.9255
+went            0.9994   1.0284
+made            0.8345   0.8773
+&               0.7599   0.8533
+nothing          0.893   0.9723
+night           0.8973   0.9571
+is              0.7286   0.8313
+drink           0.8792   0.9346
+quality         0.8895   0.9477
+ever            0.8767   0.9328
+2               0.8035   0.8811
+stop            0.8476   0.9094
+trying          0.8239   0.9028
+restaurants     0.9116   0.9568
+looking         0.8902   0.9404
+tasty           0.8173   0.8876
+items           0.7076   0.7915
+don             0.7057   0.8464
+wait            1.0092    1.003
+probably        0.9149   0.9788
+least           0.8989   0.9398
+worth           0.9882   1.0051
+same            0.8286   0.9209
+are             0.8172   0.8939
+-rrb-           0.6902   0.8411
+came            0.8705   0.9295
+wouldn          1.8984   0.9736
+place           0.8805   0.9713
+everything      0.8684   0.9179
+table           0.9092   0.9618
+ordered         0.9123   0.9743
+though          0.9813   1.0078
+vegas            1.129   0.9772
+restaurant       0.879   0.9483
+eating          0.8298   0.9098
+off             0.7819   0.8642
+places          0.8909   0.9573
+returning       0.8682   0.9355
+thank           0.8322   0.8559
+did             0.8146   0.8819
+quick           1.0027   0.9885
+perfect         0.7837   0.8649
+mexican          0.916   0.9935
+got             0.8859   0.9526
+wish            0.9519   0.9843
+that            0.5823   0.7175
+wasn            1.4807   1.2455
+burger          1.0196   1.0073
+won             0.6758   0.8274
+sushi           0.9655   0.9827
+buffet          0.9482   0.9605
+different       0.9175   0.9561
+town            0.8253   0.8826
+everyone        0.9152    0.949
+friends         0.8299   0.9257
+ve              0.8541   1.0575
+especially      0.9756   0.9987
+once            0.9329   0.9654
+keep            0.8468   0.9216
+overall         1.0953   1.0914
+full            0.8359   0.8981
+little          0.8736   0.9233
+next            0.8507   0.9027
+however         1.0001    1.032
+away            0.8326   0.8989
+drinks          0.9718   0.9924
+around          0.8457    0.914
+can             0.7425   0.8381
+pizza           0.9541   0.9821
+prices          0.9371   0.9737
+said            0.9193   0.9602
+live            0.8638   0.9428
+pretty          0.9113   0.9786
+sandwich        0.8758   0.9414
+stars            0.929   0.9632
+enough          0.8485   0.9089
+clean           0.8805   0.9094
+dinner          0.9571    0.954
+home            0.8527   0.9215
+better          0.9011   0.9483
+special         0.9165   0.9602
+super           0.8471   0.9193
+service          1.027    0.996
+location        0.8637   0.9223
+coming          0.8962   0.9262
+customer         0.917   0.9469
+
+
+Time taken to build model: 471.83 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      165859               50.9423 %
+Incorrectly Classified Instances    159723               49.0577 %
+Kappa statistic                          0.1424
+Mean absolute error                      0.3868
+Root mean squared error                  0.44  
+Relative absolute error                 94.9262 %
+Root relative squared error             97.4526 %
+Total Number of Instances           325582     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.52      0.293      0.536     0.52      0.528      0.663    0
+                 0.639     0.558      0.494     0.639     0.557      0.553    1
+                 0.071     0.014      0.455     0.071     0.123      0.725    2
+Weighted Avg.    0.509     0.374      0.505     0.509     0.483      0.621
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 66713 60615   887 |     a = 0
+ 51048 95790  3138 |     b = 1
+  6683 37352  3356 |     c = 2

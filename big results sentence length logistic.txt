@@ -1,0 +1,59 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.Logistic -R 1.0E-8 -M -1
+Relation:     yelp_dataset_class-weka.filters.unsupervised.attribute.Remove-R3-111
+Instances:    957594
+Attributes:   3
+              avg_sentence_length
+              review_length
+              usefulness_attr
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Logistic Regression with ridge parameter of 1.0E-8
+Coefficients...
+                         Class
+Variable                     0        1
+=======================================
+avg_sentence_length    -0.0077  -0.0034
+review_length          -0.0092  -0.0041
+Intercept               2.4167   1.9435
+
+
+Odds Ratios...
+                         Class
+Variable                     0        1
+=======================================
+avg_sentence_length     0.9924   0.9966
+review_length           0.9908   0.9959
+
+
+Time taken to build model: 28.97 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances      168730               51.8241 %
+Incorrectly Classified Instances    156852               48.1759 %
+Kappa statistic                          0.1647
+Mean absolute error                      0.3848
+Root mean squared error                  0.4388
+Relative absolute error                 94.4382 %
+Root relative squared error             97.1947 %
+Total Number of Instances           325582     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.587     0.324      0.54      0.587     0.563      0.68     0
+                 0.594     0.502      0.503     0.594     0.545      0.556    1
+                 0.093     0.017      0.482     0.093     0.156      0.75     2
+Weighted Avg.    0.518     0.361      0.515     0.518     0.495      0.633
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 75250 51931  1034 |     a = 0
+ 57209 89082  3685 |     b = 1
+  6784 36209  4398 |     c = 2
